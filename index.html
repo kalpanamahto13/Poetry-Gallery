@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poetry Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing">
+        <!-- Floating Particles -->
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div> 
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <!-- Decorative Feather -->
+        <svg class="feather" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 10 Q60 30 55 50 Q52 65 50 90 M50 90 Q48 65 45 50 Q40 30 50 10 M50 30 Q65 35 70 40 M50 40 Q65 42 68 45 M50 50 Q62 52 65 55 M50 60 Q60 60 62 62 M50 70 Q58 68 60 70" stroke="#A66D7E" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+
+        <!-- Decorative Quote
+        <div class="decorative-quote" style="position: absolute; bottom: 20%; left: 10%; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: rgba(166, 109, 126, 0.6); font-style: italic; transform: rotate(-5deg);">
+            "Words are the wings of the soul"
+        </div> -->
+
+        <!-- Decorative Icon -->
+        <div class="decorative-icon" style="position: absolute; top: 25%; left: 10%; font-size: 2rem; color: rgba(191, 162, 219, 0.4);">
+            ✦
+        </div>
+
+        <button id="theme-toggle" class="theme-toggle">🌙</button>
+
+        <div class="landing-content">
+            <h1>Welcome to My Poetry Gallery</h1>
+            <div class="divider"></div>
+            <p class="subtitle">"Poetries that speaks to the heart ❤️" <br>
+                ~ Kalpana Mahto
+
+            </p>
+
+            <button class="enter-btn" onclick="enterGallery()">ENTER GALLERY</button>
+        </div>
+    </div>
+
+    <!-- Gallery Page -->
+    <div id="gallery">
+        <div class="gallery-header">
+            <h2 class="gallery-title">My Poetries</h2>
+            <p class="gallery-subtitle">A collection of moments, feelings, and dreams</p>
+            <div class="divider"></div>
+
+       <div class="language-selection" style="display: flex; flex-direction: column; align-items: center; border : 2px solid #A66D7E; padding: 50px; border-radius: 10px; width: 50%; margin-left: auto; margin-right: auto;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #A66D7E; margin-bottom: 1rem; text-align: center;">
+                Choose your preferred language !!!</h3>
+
+
+              <div class="language-buttons" style=" display: flex; gap: 40px;">
+                 <button id="english-btn">English</button>
+            <button id="hindi-btn">Hindi</button>
+           </div>
+        </div>
+
+        <!-- Change Language Button -->
+        <button id="change-language-btn" class="change-language-btn" style="display: none; ">
+            🔄 Change Language</button>
+
+            
+
+        <!-- Subcategory buttons for Hindi -->
+        <div class="subcategory-buttons" id="subcategory-buttons" style="display: flex; justify-content: center; gap: 200px; margin: 50px 0; border: 2px solid #A66D7E; padding: 10px; border-radius: 10px; padding: 25PX;">
+            <button id="nazm-btn">Poetries/Nazm</button>  
+            <button id="shayari-btn">Shayari</button> 
+            <button id="writeup-btn">Write Ups</button>
+        </div>
+
+        <!-- Subcategory buttons for English -->
+        <div class="subcategory-buttons" id="english-subcategory-buttons" style="display: flex; justify-content: center;  align-items: center ; gap:180px; margin: 50px 0; border: 2px solid  #A66D7E; padding: 10px; border-radius: 10px; padding: 25px;">
+            <button id="english-poems-btn">Poems</button>
+            <button id="english-writeups-btn">Writeups</button>
+            <button id="english-msg-btn">Messages</button>
+            <button id="english-stories-btn"><a href="#" style="text-decoration: none; color: white;">Stories</a></button>
+            
+        </div>
+
+        </div>
+
+        <!-- Poems Section -->
+        <div class="poems-section">
+            <div class="poems-header">
+                <h2 class="poems-title">Poems</h2>
+                <p class="poems-subtitle">A collection feelings and emotions</p>
+                <div class="divider"></div>
+            </div>
+            <div class="poems-grid" id="poemsGrid"></div>
+        </div>
+
+        <!-- Shayari Section -->
+        <div class="shayari-section">
+            <div class="shayari-header">
+                <h2 class="shayari-title">Shayari</h2>
+                <p class="shayari-subtitle">Poetry in Urdu tradition</p>
+                <div class="divider"></div>
+            </div>
+            <div class="shayari-grid" id="shayariGrid"></div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h3 class="modal-title" id="modalTitle"></h3>
+            <div class="modal-divider"></div>
+            <div class="modal-poem" id="modalPoem"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="gallery-footer">
+        <div class="footer-content">
+            <div class="footer-quote">
+                <p>"Words are the wings of the soul"</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/_.kalpanamahto._" class="footer-link"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://www.youtube.com/@kalpanamahto13" class="footer-link"><i class="fab fa-youtube"></i> Youtube</a>
+
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Kalpana Mahto. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+  
+</body>
+</html>
